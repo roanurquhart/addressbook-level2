@@ -78,7 +78,6 @@ public class Parser {
             return prepareAdd(arguments);
 
             case FavoriteCommand.COMMAND_WORD:
-                System.out.println("hello");
                 return prepareFavorite(arguments);
 
         case DeleteCommand.COMMAND_WORD:
@@ -168,7 +167,16 @@ public class Parser {
      * @return the prepared command
      */
     private Command prepareFavorite(String args) {
-        return null;
+        final Matcher matcher = KEYWORDS_ARGS_FORMAT.matcher(args.trim());
+        if (!matcher.matches()) {
+            return new IncorrectCommand(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindCommand.MESSAGE_USAGE));
+        }
+
+        // keywords delimited by whitespace
+        final String[] keywords = matcher.group("keywords").split("\\s+");
+        final Set<String> keywordSet = new HashSet<>(Arrays.asList(keywords));
+        return new FavoriteCommand(keywordSet);
     }
     /**
      * Parses arguments in the context of the delete person command.
