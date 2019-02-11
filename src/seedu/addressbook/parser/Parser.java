@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import seedu.addressbook.commands.AddCommand;
+import seedu.addressbook.commands.FavoriteCommand;
 import seedu.addressbook.commands.ClearCommand;
 import seedu.addressbook.commands.Command;
 import seedu.addressbook.commands.DeleteCommand;
@@ -75,6 +76,10 @@ public class Parser {
 
         case AddCommand.COMMAND_WORD:
             return prepareAdd(arguments);
+
+            case FavoriteCommand.COMMAND_WORD:
+                System.out.println("hello");
+                return prepareFavorite(arguments);
 
         case DeleteCommand.COMMAND_WORD:
             return prepareDelete(arguments);
@@ -156,7 +161,15 @@ public class Parser {
         return new HashSet<>(tagStrings);
     }
 
-
+    /**
+     * Pareses arguments in the context of the delete person command
+     *
+     * @param args full command args string
+     * @return the prepared command
+     */
+    private Command prepareFavorite(String args) {
+        return null;
+    }
     /**
      * Parses arguments in the context of the delete person command.
      *

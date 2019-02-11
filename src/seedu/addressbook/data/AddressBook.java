@@ -6,18 +6,23 @@ import seedu.addressbook.data.person.UniquePersonList;
 import seedu.addressbook.data.person.UniquePersonList.DuplicatePersonException;
 import seedu.addressbook.data.person.UniquePersonList.PersonNotFoundException;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Represents the entire address book. Contains the data of the address book.
  */
 public class AddressBook {
 
     private final UniquePersonList allPersons;
+    private final List<ReadOnlyPerson> favoritePersons;
 
     /**
      * Creates an empty address book.
      */
     public AddressBook() {
         allPersons = new UniquePersonList();
+        favoritePersons = new ArrayList<ReadOnlyPerson>();
     }
 
     /**
@@ -27,6 +32,7 @@ public class AddressBook {
      */
     public AddressBook(UniquePersonList persons) {
         this.allPersons = new UniquePersonList(persons);
+        this.favoritePersons = new ArrayList<ReadOnlyPerson>();
     }
 
     /**
@@ -36,6 +42,16 @@ public class AddressBook {
      */
     public void addPerson(Person toAdd) throws DuplicatePersonException {
         allPersons.add(toAdd);
+    }
+
+    /**
+     * Adds a person to the favorites list.
+     *
+     * @param toAdd person to be added to the favorites list.
+     * @throws DuplicatePersonException
+     */
+    public void addFavorite(ReadOnlyPerson toAdd) throws DuplicatePersonException {
+        favoritePersons.add(toAdd);
     }
 
     /**
