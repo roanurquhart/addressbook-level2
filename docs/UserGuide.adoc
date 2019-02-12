@@ -80,7 +80,7 @@ Words in `UPPER_CASE` are the parameters
 Examples:
 
 * `favorite John`
-* `favorite Betsy
+* `favorite Betsy`
 
 == Listing all persons : `list`
 
