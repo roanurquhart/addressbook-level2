@@ -14,6 +14,7 @@ public class AddCommandTest {
     private static final List<ReadOnlyPerson> EMPTY_PERSON_LIST = Collections.emptyList();
     private static final Set<String> EMPTY_STRING_SET = Collections.emptySet();
 
+    
     @Test
     public void addCommand_invalidName_throwsException() {
         final String[] invalidNames = { "", " ", "[]\\[;]" };
